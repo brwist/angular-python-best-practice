@@ -4,11 +4,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Timestamp } from 'rxjs';
 
 export interface PeriodicElement {
   name: string;
   address: string;
   phone_number: number;
+  createdAt: Date;
 }
 
  @Component({
@@ -17,7 +19,7 @@ export interface PeriodicElement {
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent  {
-  displayedColumns: string[] = ['name', 'address', 'phone_number'];
+  displayedColumns: string[] = ['name', 'address', 'phone_number','createdAt'];
   dataSource : any;
   searchp:any;
    response :any
@@ -32,6 +34,10 @@ export class FormComponent  {
       this.response = res
       this.dataSource = this.response.data;
     })
+}
+convertDate(date:Date){
+const d = new Date(date)
+return d.getFullYear() +"-"+ d.getMonth()+"-"+d.getDate();
 }
 submit(value:any)
 {

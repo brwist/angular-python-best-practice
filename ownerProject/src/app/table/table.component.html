@@ -29,7 +29,7 @@
                 
                 <mat-form-field appearance="standard" >
                   <mat-label>Phone Number</mat-label>
-                  <input  type="tel" matInput maxlength="10" inputmode="tel" placeholder="Enter Mobile Number" formControlName="mno" #mobileInput>
+                  <input pattern="[1-9]{1}[0-9]{9}"  type="number" matInput maxlength="10" inputmode="number" placeholder="Enter Mobile Number" formControlName="mno" #mobileInput>
                   <mat-hint>Mini character 10: {{ mobileInput.value.length }}/10</mat-hint>
                   <mat-error>Phone Number is required</mat-error>
                   <mat-error **ngIf="(form.get('mno')).errors?.minlength">

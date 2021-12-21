@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     address: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    mno: new FormControl('', [Validators.required, Validators.maxLength(10)])
+    mno: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
   });
   constructor(private commonservice:CommonService, readonly snackBar: MatSnackBar){}
 
