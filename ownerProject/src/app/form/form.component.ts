@@ -19,20 +19,23 @@ export interface PeriodicElement {
 export class FormComponent  {
   displayedColumns: string[] = ['name', 'address', 'phone_number'];
   dataSource : any;
+  searchp:any;
    response :any
    searchform = new FormGroup({
     search: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
-  constructor(private commonservice: CommonService){}
+  constructor(private commonservice: CommonService){
+
+  }
   ngOnInit() {
-    this.commonservice.getData().subscribe((res)=>{
+    this.commonservice.getData(this.searchform.value.search).subscribe((res)=>{
       this.response = res
       this.dataSource = this.response.data;
     })
 }
-submit()
+submit(value:any)
 {
-  this.commonservice.getData().subscribe((res)=>{
+  this.commonservice.getData(value).subscribe((res)=>{
     this.response = res
     this.dataSource = this.response.data;
   })

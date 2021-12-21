@@ -32,4 +32,16 @@
             }
         }
     }
+    &-bottom {
+        text-align: center;
+        padding: 40px;
+        a{
+            font-size: 16px;
+            color: #3f51b5;
+            text-decoration: none;
+        }
+    }
 }
+mat-form-field {
+    margin-right: 12px;
+  }

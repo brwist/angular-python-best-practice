@@ -3,10 +3,10 @@
         <mat-card>
             <mat-card-title>Details</mat-card-title>
             <mat-card-content>
-                <form [formGroup]="form" (ngSubmit)="submit(form)" autocomplete="off">
+                <form [formGroup]="form" (ngSubmit)="submit()" formDirective="ngForm"  autocomplete="off">
                 <mat-form-field appearance="standard" >
                     <mat-label>Name</mat-label>
-                    <input matInput maxlength="15" inputmode="tel" placeholder="Enter Name" formControlName="name" #nameInput>
+                    <input matInput maxlength="15" inputmode="text" placeholder="Enter Name" formControlName="name" #nameInput>
                     <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint>
                     <mat-error>Name is required</mat-error>
                     <mat-error **ngIf="(form.get('name')).errors?.minlength">
@@ -19,7 +19,6 @@
                 <mat-form-field appearance="standard">
                     <mat-label>Address:</mat-label>
                     <input matInput type="text" formControlName="address" placeholder="Enter Address">
-                    <!-- <mat-icon matSuffix>mail_outline</mat-icon> -->
                     <mat-hint>Input the fully qualified email address</mat-hint>
                     <mat-error>Address is required</mat-error>
                     <mat-error **ngIf="(form.get('address')).errors?.minlength">
@@ -30,7 +29,7 @@
                 
                 <mat-form-field appearance="standard" >
                   <mat-label>Phone Number</mat-label>
-                  <input matInput maxlength="15" inputmode="tel" placeholder="Enter Mobile Number" formControlName="mno" #mobileInput>
+                  <input  type="tel" matInput maxlength="10" inputmode="tel" placeholder="Enter Mobile Number" formControlName="mno" #mobileInput>
                   <mat-hint>Mini character 10: {{ mobileInput.value.length }}/10</mat-hint>
                   <mat-error>Phone Number is required</mat-error>
                   <mat-error **ngIf="(form.get('mno')).errors?.minlength">
@@ -39,7 +38,7 @@
               </mat-form-field>
           
               <div>
-                <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+                <button mat-raised-button color="primary" type="submit" >Submit</button>
             </div>
           
             </form>
@@ -47,5 +46,7 @@
           </mat-card>
          
     </div>
-    <a style="text-align: center;" routerLink="/record">See Record</a>
+    <div class="details_form-bottom">
+        <a routerLink="/record">See All Records  >> </a>
+    </div>    
 </div>
