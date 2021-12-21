@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     }
   }, {
-    timestamps: false
+    timestamps: true
   });
   return User;
 };
