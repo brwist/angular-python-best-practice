@@ -1,13 +1,12 @@
 
 'use strict';
 
-var fs        = require('fs');
-var path      = require('path');
+var fs = require('fs');
+var path = require('path');
 const { Sequelize, DataTypes } = require("sequelize");
-var basename  = path.basename(__filename);
-var env       = process.env.NODE_ENV || 'development';
-var config    = require('./db/config.js')[env];
-var db        = {};
+var env = process.env.NODE_ENV || 'development';
+var config = require('./db/config.js')[env];
+var db = {};
 
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 // const sequelize = new Sequelize('sqlite::memory:')
@@ -28,7 +27,7 @@ fs.readdir(path.join(__dirname, 'models/'), (error, files) => {
 });
 sequelize.authenticate().then(async () => {
   console.log('Connected to database');
-  await sequelize.sync({ force: true }).then(() => {
+  await sequelize.sync({ force: false }).then(() => {
     console.log('Database synced');
   }).catch(error => {
     throw error;
