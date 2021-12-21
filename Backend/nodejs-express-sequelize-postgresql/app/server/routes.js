@@ -1,6 +1,4 @@
-const {
-    addData
-  } = require("../queries/data");
+const { addUser, getUsers } = require("../controllers/user");
   
   const routes = (server) => {
     server.get("/", (req, res, next) => {
@@ -8,8 +6,8 @@ const {
       return next();
     })
   
-    server.post("/add", addData);
-  
+    server.post("/addUser", addUser);
+    server.get("/getUsers", getUsers);
   }
   
   module.exports = routes;
