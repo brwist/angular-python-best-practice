@@ -26,13 +26,17 @@ const addUser = async (req, res, next) => {
 const getUsers = async (req, res, next) => {
 
     let search  = req.query.search;
-    const users = await db.User.findAll({
-      where: {
-        name:{
-          [Op.like]:'%'+search
+    if(search) {
+      var users = await db.User.findAll({
+        where: {
+          name:{
+            [Op.like]:'%'+search+'%'
+          }
         }
-      }
-    });
+      });
+    } else {
+      var users = await db.User.findAll();
+    }
     res.send({status: true, message: 'Users listed successfully.', data: users});
     
 }
