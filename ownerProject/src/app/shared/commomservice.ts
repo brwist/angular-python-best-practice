@@ -10,10 +10,14 @@ export class CommonService {
   constructor(private http: HttpClient){}
 
 getData() {
-    return this.http.get('');
+    return this.http.get('http://localhost:3001/getUsers');
   }
-addData() {
-    return this.http.post('',{});
+addData(user:any) {
+  var formData = new FormData();
+  formData.append("name", user.name);
+  formData.append("address", user.address);
+  formData.append("phone_number", user.mno);
+  return this.http.post('http://localhost:3001/addUser',formData);
   }
 }
 
