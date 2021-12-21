@@ -1,5 +1,7 @@
 const errs = require('restify-errors');
 const db = require('../index');
+// const Op = db.Sequelize.Op
+const { Op } = require("sequelize");
 
 const addUser = async (req, res, next) => {
 
@@ -23,7 +25,14 @@ const addUser = async (req, res, next) => {
 
 const getUsers = async (req, res, next) => {
 
-    const users = await db.User.findAll();
+    let search  = req.query.search;
+    const users = await db.User.findAll({
+      where: {
+        name:{
+          [Op.like]:'%'+search
+        }
+      }
+    });
     res.send({status: true, message: 'Users listed successfully.', data: users});
     
 }
