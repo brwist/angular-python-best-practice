@@ -1,6 +1,5 @@
 const errs = require('restify-errors');
 const db = require('../index');
-// const Op = db.Sequelize.Op
 const { Op } = require("sequelize");
 
 const addUser = async (req, res, next) => {
