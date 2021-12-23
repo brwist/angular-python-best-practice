@@ -1,7 +1,7 @@
 let models = require('./app/index');
 const server = require('./app/server/index');
 
-server.listen(3001, function() {
+server.listen(process.env.PORT || 3001, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
 server.on('restifyError', function(req, res, err, callback) {
